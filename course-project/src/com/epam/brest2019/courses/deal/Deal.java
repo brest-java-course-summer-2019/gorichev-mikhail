@@ -23,19 +23,8 @@ public class Deal {
         return distance.multiply(price.getPricePerKm()).add(weight.multiply(price.getPricePerKg()));
     }
 
-    public BigDecimal getDistance() {
-        return distance;
-    }
-
-    public BigDecimal getWeight() {
-        return weight;
-    }
-
     public BigDecimal getCost() {
         return cost;
     }
 
-    public Price getPrice() {
-        return price;
-    }
 }

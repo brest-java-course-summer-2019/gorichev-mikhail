@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class ValueWorker {
 
-    static private final String QUIT_SYMBOL = "q";
+    static private final String QUIT_SYMBOL = "quit";
 
     static public EnteredValue parseInputValue(String inputValue) {
         EnteredValue result = new ExitValue();

@@ -1,33 +1,25 @@
 package com.epam.brest2019.courses;
 
+import com.epam.brest2019.courses.console.Console;
+import com.epam.brest2019.courses.contract.Price;
+import com.epam.brest2019.courses.deal.Deal;
+
 import java.math.BigDecimal;
 
 public class Main {
 
-    private static final BigDecimal DEFAULT_PRICE_PER_KG = new BigDecimal("30");
-
     public static void main(String[] args) {
+        Console console = new Console();
 
-        System.out.println("Enter the weight in kilograms or 'q' for quit:");
-        BigDecimal weight = InputWorker.getValue();
-        System.out.println("Enter the distance in kilometers or 'q' for quit:");
-        BigDecimal distance = InputWorker.getValue();
+        BigDecimal distance = console.getValue("Enter distance in km or q for quit");
+        BigDecimal weight = console.getValue("Enter weight in kg or q for quit");
+        BigDecimal pricePerKm = console.getValue("Enter price per km or q for quit");
+        BigDecimal pricePerKg = console.getValue("Enter price per kg or q for quit");
 
-        BigDecimal pricePerKm = PropertyWorker.getKmProperty(distance);
-        BigDecimal pricePerKg = DEFAULT_PRICE_PER_KG;
+        Price standardPrice = new Price(pricePerKg, pricePerKm);
+        Deal firstDeal = new Deal(distance, weight, standardPrice);
 
-        System.out.println("====================Values=====================");
-        System.out.println("weight = " + weight);
-        System.out.println("distance = " + distance);
-        System.out.println("pricePerKg = " + pricePerKg);
-        System.out.println("pricePerKm = " + pricePerKm);
-        System.out.println("===============================================");
-
-        BigDecimal price = weight.multiply(pricePerKg).add(distance.multiply(pricePerKm)).multiply(InputWorker.getMultiplier());
-        System.out.println("Price = " + price);
+        System.out.println("Deal cost: " + firstDeal.getCost());
     }
-
-
-
 
 }

@@ -9,12 +9,12 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class CVSFileReader implements FileReader{
+public class CSVFileReader implements FileReader{
 
     @Override
     public Map<Integer, BigDecimal> readData(String filePath) throws IOException {
 
-        String paths = Objects.requireNonNull(CVSFileReader.class.getClassLoader().getResource(filePath).getPath());
+        String paths = Objects.requireNonNull(CSVFileReader.class.getClassLoader().getResource(filePath)).getPath();
 
         Map<Integer, BigDecimal> resultMap;
         try (Stream<String> lines = Files.lines(Paths.get(paths))) {

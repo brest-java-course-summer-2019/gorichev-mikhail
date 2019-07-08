@@ -1,10 +1,15 @@
-package com.epam.brest2019.courses.value;
+package com.epam.brest2019.courses.input;
+
+import com.epam.brest2019.courses.value.CorrectValue;
+import com.epam.brest2019.courses.value.EnteredValue;
+import com.epam.brest2019.courses.value.ExitValue;
+import com.epam.brest2019.courses.value.IncorrectValue;
 
 import java.math.BigDecimal;
 
 public class ValueWorker {
 
-    static private final String QUIT_SYMBOL = "quit";
+    static private final String QUIT_SYMBOL = "q";
 
     static public EnteredValue parseInputValue(String inputValue) {
         EnteredValue result = new ExitValue();

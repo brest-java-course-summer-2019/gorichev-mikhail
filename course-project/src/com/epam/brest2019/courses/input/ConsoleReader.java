@@ -1,18 +1,17 @@
-package com.epam.brest2019.courses.console;
+package com.epam.brest2019.courses.input;
 
 import com.epam.brest2019.courses.value.CorrectValue;
 import com.epam.brest2019.courses.value.EnteredValue;
 import com.epam.brest2019.courses.value.IncorrectValue;
-import com.epam.brest2019.courses.value.ValueWorker;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class Console {
+public class ConsoleReader implements InputReader{
 
     private Scanner scanner;
 
-    public Console() {
+    public ConsoleReader() {
         this.scanner = new Scanner(System.in);
     }
 
@@ -22,11 +21,10 @@ public class Console {
             CorrectValue correctValue = (CorrectValue) value;
             System.out.println("Value:" + correctValue.getValue());
             return correctValue.getValue();
-        } else {
-            System.out.println("Bye!");
-            System.exit(0);
-            return null;
         }
+        System.out.println("Bye!");
+        System.exit(0);
+        return null;
     }
 
     private EnteredValue receiveValue(String message) {

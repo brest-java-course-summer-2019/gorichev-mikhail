@@ -1,9 +1,8 @@
 package com.epam.brest2019.courses.deal;
 
-import com.epam.brest2019.courses.contract.Price;
+import com.epam.brest2019.courses.price.Price;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class Deal {
 
@@ -17,6 +16,7 @@ public class Deal {
         this.weight = weight;
         this.price = price;
         this.cost = calculateCost();
+        this.price.addDeal(this);
     }
 
     private BigDecimal calculateCost() {

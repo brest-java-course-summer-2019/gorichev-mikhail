@@ -12,14 +12,19 @@ public class CategoryTest {
     @Test
     public void getCategoryId() {
         category.setCategoryId(10);
-        Assert.assertTrue(category.getCategoryId().equals(10));
+        Assert.assertEquals(category.getCategoryId().intValue(),10);
     }
 
     @Test
     public void getCategoryName() {
         category.setCategoryName("Name");
-        Assert.assertTrue(category.getCategoryName().equals("Name"));
+        Assert.assertEquals(category.getCategoryName(), "Name");
     }
 
+    @Test
+    public void testToString() {
+        String expected = "Category{categoryId=null, categoryName=null}";
+        Assert.assertEquals(category.toString(), expected);
+    }
 
 }

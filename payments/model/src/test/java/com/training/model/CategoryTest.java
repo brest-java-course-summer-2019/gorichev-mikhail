@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class CategoryTest {
 
-    Category category = new Category();
+    private Category category = new Category();
 
     @Test
     public void getCategoryId() {
@@ -22,9 +22,16 @@ public class CategoryTest {
     }
 
     @Test
-    public void testToString() {
-        String expected = "Category{categoryId=null, categoryName=null}";
-        Assert.assertEquals(category.toString(), expected);
+    public void getCategoryDescription() {
+        category.setCategoryDescription("Test description");
+        Assert.assertEquals(category.getCategoryDescription(), "Test description");
     }
+
+    @Test
+    public void getPaymentsCount() {
+        category.setPaymentsCount(10);
+        Assert.assertEquals(category.getPaymentsCount().intValue(), 10);
+    }
+
 
 }

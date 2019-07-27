@@ -1,4 +1,4 @@
-package com.training.model;
+package com.training.payments.model;
 
 /**
  * POJO for categories.
@@ -30,7 +30,7 @@ public class Category {
     /**
      * Empty constructor.
      */
-    Category() {
+    public Category() {
 
     }
 

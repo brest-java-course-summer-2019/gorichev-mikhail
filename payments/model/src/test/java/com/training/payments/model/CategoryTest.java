@@ -1,9 +1,8 @@
-package com.training.model;
+package com.training.payments.model;
 
+import com.training.payments.model.Category;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class CategoryTest {
 

@@ -1,4 +1,4 @@
-package com.training.model;
+package com.training.payments.model;
 
 /**
  * POJO for payments.

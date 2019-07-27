@@ -14,6 +14,9 @@
 
     <modules>
         <module>model</module>
+        <module>dao</module>
+        <module>test-db</module>
+        <module>web-app</module>
     </modules>
 
     <distributionManagement>
@@ -414,7 +417,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <configuration>
-                    <linkXref>true</linkXref>
                     <sourceEncoding>utf-8</sourceEncoding>
                     <minimumTokens>100</minimumTokens>
                 </configuration>

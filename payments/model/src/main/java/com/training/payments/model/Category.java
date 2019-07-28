@@ -39,7 +39,7 @@ public class Category {
      * @param categoryName category name.
      * @param categoryDescription category description.
      */
-    Category(String categoryName, String categoryDescription) {
+    public Category(String categoryName, String categoryDescription) {
         this.categoryName = categoryName;
         this.categoryDescription = categoryDescription;
     }

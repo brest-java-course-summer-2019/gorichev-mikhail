@@ -3,7 +3,6 @@ package com.training.payments.dao;
 import com.training.payments.model.Category;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -12,8 +11,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,11 +33,11 @@ public class CategoryDaoJdbcImpl implements CategoryDao{
             "insert into categories (category_name, category_description) values (:categoryName, :categoryDescription)";
 
     private final static String UPDATE_CATEGORY =
-            "update categories set category_name = :categoryName, " +
-                    "category_description = :category_description where category_id = :categoryId";
+            "update categories set category_name = :categoryName, "
+                    + "category_description = :categoryDescription "
+                    + "where category_id = :categoryId";
 
-    private final static String DELETE_CATEGORY =
-            "delete from categories where category_id = :category_id";
+    private final static String DELETE_CATEGORY = "delete from categories where category_id = :categoryId";
 
     private final static String CATEGORY_ID = "categoryId";
     private final static String CATEGORY_NAME = "categoryName";
@@ -81,6 +78,7 @@ public class CategoryDaoJdbcImpl implements CategoryDao{
     private boolean successfullyUpdated(int numRowsUpdated) {
         return numRowsUpdated > 0;
     }
+
     @Override
     public List<Category> findAll() {
         return namedParameterJdbcTemplate.query(SELECT_ALL, BeanPropertyRowMapper.newInstance(Category.class));

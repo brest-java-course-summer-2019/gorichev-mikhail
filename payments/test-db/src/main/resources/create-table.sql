@@ -9,10 +9,10 @@ create table categories (
 drop table if exists payments;
 
 create table payments (
-     payment_id int primary key,
+     payment_id serial not null primary key,
      payment_name varchar(20) not null unique,
      payment_description varchar(30),
-     payment_cost int not null,
+     payment_cost numeric not null,
      category_id int references categories(category_id)
 );
 

@@ -26,19 +26,19 @@ public class PaymentDaoJdbcImpl implements PaymentDao {
 
     private final static String FIND_BY_ID =
             "select payment_id, payment_name, payment_description, payment_cost, category_id "
-                    + "from payments where payments_id = :paymentsId";
+                    + "from payments where payment_id = :paymentId";
 
     private final static String FIND_BY_NAME =
             "select payment_id, payment_name, payment_description, payment_cost, category_id "
-                    + "from payments where payments_name = :paymentsName";
+                    + "from payments where payment_name = :paymentName";
 
     private final static String FIND_BY_CATEGORY_ID =
             "select p.payment_id, p.payment_name, p.payment_description, p.payment_cost, p.category_id "
                     + "from payments p where category_id = :categoryId order by 2";
 
     private final static String ADD_PAYMENT =
-            "insert into payments (payment_id, payment_name, payment_description, payment_cost, category_id) "
-            + "values (:payment_id, :payment_name, :payment_description, :payment_cost, :category_id)";
+            "insert into payments (payment_name, payment_description, payment_cost, category_id) "
+            + "values (:paymentName, :paymentDescription, :paymentCost, :categoryId)";
 
     private final static String DELETE_PAYMENT =
             "delete from payments where payment_id = :paymentId";
@@ -47,11 +47,12 @@ public class PaymentDaoJdbcImpl implements PaymentDao {
             "update payments set payment_name = :paymentName, "
             + "payment_description = :paymentDescription, "
             + "payment_cost = :paymentCost, "
-            + "category_id = :categoryId, "
+            + "category_id = :categoryId "
             + "where payment_id = :paymentId";
 
     private final static String PAYMENT_ID = "paymentId";
     private final static String PAYMENT_NAME = "paymentName";
+    private final static String CATEGORY_ID = "categoryId";
 
     public PaymentDaoJdbcImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
@@ -60,7 +61,6 @@ public class PaymentDaoJdbcImpl implements PaymentDao {
     @Override
     public Payment add(Payment payment) {
         MapSqlParameterSource parameters = new MapSqlParameterSource();
-        parameters.addValue("paymentId", payment.getPaymentId());
         parameters.addValue("paymentName", payment.getPaymentName());
         parameters.addValue("paymentDescription", payment.getPaymentDescription());
         parameters.addValue("paymentCost", payment.getPaymentCost());
@@ -115,6 +115,9 @@ public class PaymentDaoJdbcImpl implements PaymentDao {
 
     @Override
     public List<Payment> findByCategoryId(Integer categoryId) {
-        return namedParameterJdbcTemplate.query(FIND_BY_CATEGORY_ID, BeanPropertyRowMapper.newInstance(Payment.class));
+        SqlParameterSource namedParameters = new MapSqlParameterSource(CATEGORY_ID, categoryId);
+        return namedParameterJdbcTemplate.query(FIND_BY_CATEGORY_ID,
+                namedParameters,
+                BeanPropertyRowMapper.newInstance(Payment.class));
     }
 }

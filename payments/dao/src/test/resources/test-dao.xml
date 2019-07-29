@@ -15,4 +15,9 @@
         <constructor-arg name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
     </bean>
 
+    <bean id="paymentDao" class="com.training.payments.dao.PaymentDaoJdbcImpl">
+        <constructor-arg name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
+    </bean>
+
+
 </beans>

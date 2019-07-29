@@ -1,6 +1,5 @@
 package com.training.payments.model;
 
-import com.training.payments.model.Payment;
 import org.junit.Assert;
 import org.junit.Test;
 

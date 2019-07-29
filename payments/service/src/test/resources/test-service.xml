@@ -17,8 +17,16 @@
         <constructor-arg ref="namedParameterJdbcTemplate"/>
     </bean>
 
-    <bean id="departmentService" class="com.training.payments.service.CategoryServiceImpl">
+    <bean id="paymentDao" class="com.training.payments.dao.PaymentDaoJdbcImpl">
+        <constructor-arg ref="namedParameterJdbcTemplate"/>
+    </bean>
+
+    <bean id="categoryService" class="com.training.payments.service.CategoryServiceImpl">
         <constructor-arg ref="categoryDao"/>
+    </bean>
+
+    <bean id="paymentService" class="com.training.payments.service.PaymentServiceImpl">
+        <constructor-arg ref="paymentDao"/>
     </bean>
 
 </beans>
